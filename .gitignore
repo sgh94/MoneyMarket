@@ -1,3 +1,29 @@
+# Compiler files
+cache/
+out/*
+!out/script/
+dist/
+types/
+
+# Ignores development broadcast logs
+broadcast/
+
+# Docs
+docs/
+bin/
+
+# Dotenv file
+.env
+config.json
+config.*.json
+!config.example.json
+
+/node_modules
+/coverage
+
+report.md
+lcov.info
+
 node_modules
 .env
 
@@ -13,5 +39,8 @@ node_modules
 /coverage
 /coverage.json
 
-# Hardhat Ignition default folder for deployments against a local node
-ignition/deployments/chain-31337
+# Script files
+/out/script/*.json
+!/out/script/.gitkeep
+
+.yarn/install-state.gz
