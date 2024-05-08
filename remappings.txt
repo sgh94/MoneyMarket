@@ -1,0 +1,11 @@
+@src/=src/
+@script/=script/
+@test/=test/
+
+@std/=lib/forge-std/src/
+@solmate/=lib/solmate/src/
+
+@hpl/=node_modules/@hyperlane-xyz/core/contracts/
+@openzeppelin/=node_modules/@openzeppelin/
+@oz/=node_modules/@openzeppelin/contracts/
+@ozu/=node_modules/@openzeppelin/contracts-upgradeable/
