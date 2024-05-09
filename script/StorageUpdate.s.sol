@@ -1,16 +1,9 @@
-// Storage : 0x6E821CB51fa7a81c213452b1DFc9d7f211C13C08
-
-// ---- Contract ----
-
-// Market(sDeposit) : 0x42B1925d95Dc2D4cD6Ed2ebBb9aa5ba93EeC3c59
-// Deposit Token : 0x481A61fB7c9EAdDD5069Fe2F6134b22AB8EE6489
-
-
 // SPDX-License-Identifier: UNLICENSED
 
 pragma solidity ^0.8.13;
+pragma abicoder v2;
 
-import {Script, console} from "forge-std/Script.sol";
+import "@std/Script.sol";
 import {STORAGE} from "../src/Storage.sol";
 
 contract StorageUpdateScript is Script {
