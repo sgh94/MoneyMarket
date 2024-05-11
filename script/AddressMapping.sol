@@ -17,4 +17,8 @@ library Addresses {
 
   address constant LendingPoolCollateralManagerAddress = address(0xf0F5762DC269c3964e554131af5968486FF61B1B);
 
+  address constant TestTokenAddress = address(0x03d7B3914D4460e157F9373c06ED2B9d02B23132);
+
+  address constant TestATokenAddress = address(0x73181B5c9bDc4882e487630BE00b4c21Be8CC08B);
+
 }

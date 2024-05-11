@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: agpl-3.0
 pragma solidity 0.6.12;
 
-import {IVariableDebtToken} from '../../interfaces/IVariableDebtToken.sol';
+import {IVariableDebtToken} from '../interfaces/IVariableDebtToken.sol';
 import {WadRayMath} from '../libraries/math/WadRayMath.sol';
 import {Errors} from '../libraries/helpers/Errors.sol';
 import {DebtTokenBase} from './base/DebtTokenBase.sol';
-import {ILendingPool} from '../../interfaces/ILendingPool.sol';
-import {IAaveIncentivesController} from '../../interfaces/IAaveIncentivesController.sol';
+import {ILendingPool} from '../interfaces/ILendingPool.sol';
+import {IAaveIncentivesController} from '../interfaces/IAaveIncentivesController.sol';
 
 /**
  * @title VariableDebtToken

@@ -4,9 +4,9 @@ pragma solidity 0.6.12;
 import {DebtTokenBase} from './base/DebtTokenBase.sol';
 import {MathUtils} from '../libraries/math/MathUtils.sol';
 import {WadRayMath} from '../libraries/math/WadRayMath.sol';
-import {IStableDebtToken} from '../../interfaces/IStableDebtToken.sol';
-import {ILendingPool} from '../../interfaces/ILendingPool.sol';
-import {IAaveIncentivesController} from '../../interfaces/IAaveIncentivesController.sol';
+import {IStableDebtToken} from '../interfaces/IStableDebtToken.sol';
+import {ILendingPool} from '../interfaces/ILendingPool.sol';
+import {IAaveIncentivesController} from '../interfaces/IAaveIncentivesController.sol';
 import {Errors} from '../libraries/helpers/Errors.sol';
 
 /**

@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: agpl-3.0
 pragma solidity 0.6.12;
 
-import {ILendingPool} from '../../../interfaces/ILendingPool.sol';
-import {ICreditDelegationToken} from '../../../interfaces/ICreditDelegationToken.sol';
+import {ILendingPool} from '../../interfaces/ILendingPool.sol';
+import {ICreditDelegationToken} from '../../interfaces/ICreditDelegationToken.sol';
 import {
   VersionedInitializable
 } from '../../libraries/aave-upgradeability/VersionedInitializable.sol';
