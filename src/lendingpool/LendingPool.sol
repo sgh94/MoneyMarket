@@ -47,6 +47,8 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
   using PercentageMath for uint256;
   using SafeERC20 for IERC20;
 
+  uint256 public constant LENDINGPOOL_REVISION = 0x2;
+
   modifier whenNotPaused() {
     _whenNotPaused();
     _;
@@ -66,6 +68,10 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
       _addressesProvider.getLendingPoolConfigurator() == msg.sender,
       Errors.LP_CALLER_NOT_LENDING_POOL_CONFIGURATOR
     );
+  }
+
+  function getRevision() internal pure override returns (uint256) {
+    return LENDINGPOOL_REVISION;
   }
 
   /**

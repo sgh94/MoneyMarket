@@ -30,14 +30,16 @@ abstract contract VersionedInitializable {
    * @dev Modifier to use in the initializer function of a contract.
    */
   modifier initializer() {
+    uint256 revision = getRevision();
     require(
-      initializing || isConstructor(),
+      initializing || isConstructor() || revision > lastInitializedRevision,
       'Contract instance has already been initialized'
     );
 
     bool isTopLevelCall = !initializing;
     if (isTopLevelCall) {
       initializing = true;
+      lastInitializedRevision = revision;
     }
 
     _;
@@ -46,6 +48,12 @@ abstract contract VersionedInitializable {
       initializing = false;
     }
   }
+
+  /**
+   * @dev returns the revision number of the contract
+   * Needs to be defined in the inherited class as a constant.
+   **/
+  function getRevision() internal pure virtual returns (uint256);
 
   /**
    * @dev Returns true if and only if the function is running in the constructor

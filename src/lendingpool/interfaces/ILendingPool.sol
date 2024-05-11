@@ -92,24 +92,6 @@ interface ILendingPool {
   event RebalanceStableBorrowRate(address indexed reserve, address indexed user);
 
   /**
-   * @dev Emitted on flashLoan()
-   * @param target The address of the flash loan receiver contract
-   * @param initiator The address initiating the flash loan
-   * @param asset The address of the asset being flash borrowed
-   * @param amount The amount flash borrowed
-   * @param premium The fee flash borrowed
-   * @param referralCode The referral code used
-   **/
-  event FlashLoan(
-    address indexed target,
-    address indexed initiator,
-    address indexed asset,
-    uint256 amount,
-    uint256 premium,
-    uint16 referralCode
-  );
-
-  /**
    * @dev Emitted when the pause is triggered.
    */
   event Paused();

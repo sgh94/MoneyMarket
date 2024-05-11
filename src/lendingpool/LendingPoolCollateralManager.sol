@@ -59,6 +59,15 @@ contract LendingPoolCollateralManager is
   }
 
   /**
+   * @dev As thIS contract extends the VersionedInitializable contract to match the state
+   * of the LendingPool contract, the getRevision() function is needed, but the value is not
+   * important, as the initialize() function will never be called here
+   */
+  function getRevision() internal pure override returns (uint256) {
+    return 0;
+  }
+
+  /**
    * @dev Function to liquidate a position if its Health Factor drops below 1
    * - The caller (liquidator) covers `debtToCover` amount of debt of the user getting liquidated, and receives
    *   a proportionally amount of the `collateralAsset` plus a bonus to cover market risk
