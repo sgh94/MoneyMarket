@@ -3,7 +3,7 @@
 pragma solidity 0.6.12;
 
 import "@std/Script.sol";
-import {Addresses} from "../AddressMapping.sol";
+import {Addresses} from "../data/AddressMapping.sol";
 import {LendingPoolAddressesProvider} from "@src/lendingpool/configuration/LendingPoolAddressesProvider.sol";
 //import {STORAGE} from "../src/Storage.sol";
 
@@ -20,8 +20,8 @@ contract DeployScript is Script {
 		// nLendingPoolAddressesProvider.setLendingPoolImpl(Addresses.LendingPoolAddress);
 		// nLendingPoolAddressesProvider.setLendingPoolConfiguratorImpl(Addresses.LendingPoolConfiguratorAddress);
 		// nLendingPoolAddressesProvider.setLendingPoolCollateralManager(Addresses.LendingPoolCollateralManagerAddress);
-		// nLendingPoolAddressesProvider.setPoolAdmin(address(this));
-		// nLendingPoolAddressesProvider.setEmergencyAdmin(address(this));
+		nLendingPoolAddressesProvider.setPoolAdmin(Addresses.WalletAddress);
+		nLendingPoolAddressesProvider.setEmergencyAdmin(Addresses.WalletAddress);
 		// nLendingPoolAddressesProvider.setPriceOracle(address(0x2da88497588bf89281816106C7259e31AF45a663));
 		
 		nLendingPoolAddressesProvider.getMarketId();

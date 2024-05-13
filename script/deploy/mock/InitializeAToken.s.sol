@@ -3,7 +3,8 @@
 pragma solidity ^0.6.12;
 
 import "@std/Script.sol";
-import {Addresses} from "../../AddressMapping.sol";
+import {Addresses} from "../../data/AddressMapping.sol";
+
 import {TestToken} from "@src/lendingpool/tokenization/TestToken.sol";
 import {AToken} from "@src/lendingpool/tokenization/AToken.sol";
 import {ILendingPool} from "@src/lendingpool/interfaces/ILendingPool.sol";

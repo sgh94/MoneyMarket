@@ -3,7 +3,7 @@
 pragma solidity ^0.6.12;
 
 import "@std/Script.sol";
-import {Addresses} from "../AddressMapping.sol";
+import {Addresses} from "../data/AddressMapping.sol";
 import {LendingPoolCollateralManager} from "@src/lendingpool/LendingPoolCollateralManager.sol";
 //import {STORAGE} from "../src/Storage.sol";
 

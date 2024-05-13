@@ -3,7 +3,8 @@
 pragma solidity ^0.6.12;
 
 import "@std/Script.sol";
-import {Addresses} from "../../AddressMapping.sol";
+import {Addresses} from "../../data/AddressMapping.sol";
+import {TokenInfo} from "../../data/TokenInfo.sol";
 
 import {TestToken} from "@src/lendingpool/tokenization/TestToken.sol";
 import {AToken} from "@src/lendingpool/tokenization/AToken.sol";
@@ -27,8 +28,8 @@ contract DeployScript is Script {
 
 		string memory stableDebtTokenName = "Test Stable Debt Token";
 		string memory stableDebtTokenSymbol = "TSDT";
-		// StableDebtToken nStableDebtToken = new StableDebtToken();
-		StableDebtToken stableDebtToken = StableDebtToken(Addresses.StableDebtTokenAddress);
+		StableDebtToken stableDebtToken = new StableDebtToken();
+		//StableDebtToken stableDebtToken = StableDebtToken(Addresses.StableDebtTokenAddress);
 
 		uint8 debtTokenDecimals = 18;
 		bytes memory emptyBytes = "";
@@ -56,8 +57,8 @@ contract DeployScript is Script {
 
 		string memory variableDebtTokenName = "Test Variable Debt Token";
 		string memory variableDebtTokenSymbol = "TVDT";
-		// VariableDebtToken nVariableDebtToken = new VariableDebtToken();
-		VariableDebtToken variableDebtToken = VariableDebtToken(Addresses.VariableDebtTokenAddress);
+		VariableDebtToken variableDebtToken = new VariableDebtToken();
+		// VariableDebtToken variableDebtToken = VariableDebtToken(Addresses.VariableDebtTokenAddress);
 
 		variableDebtToken.initialize(
 			ILendingPool(Addresses.LendingPoolAddress), 
