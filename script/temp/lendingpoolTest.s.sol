@@ -4,8 +4,9 @@ pragma solidity 0.6.12;
 
 import "@std/Script.sol";
 import {Addresses} from "../data/AddressMapping.sol";
+import {LendingPool} from "@src/lendingpool/LendingPool.sol";
 import {LendingPoolAddressesProvider} from "@src/lendingpool/configuration/LendingPoolAddressesProvider.sol";
-//import {STORAGE} from "../src/Storage.sol";
+import {TestToken} from "@src/lendingpool/tokenization/TestToken.sol";
 
 contract DeployScript is Script {
 	function run() external {
@@ -14,25 +15,17 @@ contract DeployScript is Script {
 
 		vm.startBroadcast(deployPrivateKey);
 
-		LendingPoolAddressesProvider nLendingPoolAddressesProvider = LendingPoolAddressesProvider(Addresses.LendingPoolAddressesProviderAddress);
+    TestToken depositAsset = TestToken(Addresses.TestTokenAddress);
+    depositAsset.mint(Addresses.WalletAddress, 100);
+    depositAsset.mint(msg.sender, 100);
+    depositAsset.approve(Addresses.LendingPoolAddressesProviderAddress, 100);
+    depositAsset.approve(Addresses.LendingPoolAddress, 100);
 
-		//
-		// nLendingPoolAddressesProvider.setLendingPoolImpl(Addresses.LendingPoolAddress);
-		// nLendingPoolAddressesProvider.setLendingPoolConfiguratorImpl(Addresses.LendingPoolConfiguratorAddress);
-		// nLendingPoolAddressesProvider.setLendingPoolCollateralManager(Addresses.LendingPoolCollateralManagerAddress);
-		//nLendingPoolAddressesProvider.setPoolAdmin(Addresses.WalletAddress);
-		//nLendingPoolAddressesProvider.setEmergencyAdmin(Addresses.WalletAddress);
-		nLendingPoolAddressesProvider.setPriceOracle(Addresses.PriceOracleAddress);
-		nLendingPoolAddressesProvider.setLendingRateOracle(Addresses.LendingRateOracleAddress);
-		
-		nLendingPoolAddressesProvider.getMarketId();
-		nLendingPoolAddressesProvider.getLendingPool();
-		nLendingPoolAddressesProvider.getLendingPoolConfigurator();
-		nLendingPoolAddressesProvider.getLendingPoolCollateralManager();
-		nLendingPoolAddressesProvider.getPoolAdmin();
-		nLendingPoolAddressesProvider.getEmergencyAdmin();
-		nLendingPoolAddressesProvider.getPriceOracle();
-		nLendingPoolAddressesProvider.getLendingRateOracle();
+		LendingPool lendingPool = LendingPool(Addresses.LendingPoolAddress);
+    lendingPool.deposit(Addresses.TestTokenAddress, 10, Addresses.WalletAddress);
+
+    lendingPool.withdraw(Addresses.TestTokenAddress, 10, Addresses.BorrowerAddress);
+
 
 		vm.stopBroadcast();
 	}

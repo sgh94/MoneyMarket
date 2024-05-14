@@ -8,6 +8,7 @@ pragma solidity 0.6.12;
 library Addresses {
   
   address constant WalletAddress = address(0x5803CdB747e1552Be21C5FCa63228aA3D2622873);
+  address constant BorrowerAddress = address(0x34501EE677d8180522730e78C213Fec1b53Be5F0);
 
   // Lending Pool
   address constant LendingPoolAddressesProviderAddress = address(0xe24F680D86422Ec5Fc2665cf2A325b6aCf0f796F);
@@ -16,6 +17,8 @@ library Addresses {
   address constant LendingPoolCollateralManagerAddress = address(0xf0F5762DC269c3964e554131af5968486FF61B1B);
   address constant ReserveInterestRateStrategyAddress = address(0x95470D671889225e83b9c86B901691f6d6BEa6a2);
   address constant IncentivesControllerAddress = address(0xc7cAEd757dd2aA393F709784F902341Ea2212caB);
+  address constant PriceOracleAddress = address(0x6191e94F31f6d6F2faE9F05646d9FA74f710E80E);
+  address constant LendingRateOracleAddress = address(0x48aFf0e4f59bFB289d04866c5daB78D696923145);
 
   // Token
   address constant TestTokenAddress = address(0x08D8f4C96F2b7F855B9BAB5B40D62a2074b97460);
