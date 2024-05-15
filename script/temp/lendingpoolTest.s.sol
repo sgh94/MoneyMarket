@@ -6,7 +6,10 @@ import "@std/Script.sol";
 import {Addresses} from "../data/AddressMapping.sol";
 import {LendingPool} from "@src/lendingpool/LendingPool.sol";
 import {LendingPoolAddressesProvider} from "@src/lendingpool/configuration/LendingPoolAddressesProvider.sol";
+import {LendingPoolConfigurator} from "@src/lendingpool/LendingPoolConfigurator.sol";
+
 import {TestToken} from "@src/lendingpool/tokenization/TestToken.sol";
+import {DataTypes} from "@src/lendingpool/libraries/types/DataTypes.sol";
 
 contract DeployScript is Script {
 	function run() external {
@@ -15,17 +18,27 @@ contract DeployScript is Script {
 
 		vm.startBroadcast(deployPrivateKey);
 
+    uint256 tokenAmount = 100;
+
     TestToken depositAsset = TestToken(Addresses.TestTokenAddress);
-    depositAsset.mint(Addresses.WalletAddress, 100);
-    depositAsset.mint(msg.sender, 100);
-    depositAsset.approve(Addresses.LendingPoolAddressesProviderAddress, 100);
-    depositAsset.approve(Addresses.LendingPoolAddress, 100);
+    depositAsset.mint(Addresses.WalletAddress, tokenAmount);
+    depositAsset.approve(Addresses.LendingPoolAddress, tokenAmount);
 
-		LendingPool lendingPool = LendingPool(Addresses.LendingPoolAddress);
-    lendingPool.deposit(Addresses.TestTokenAddress, 10, Addresses.WalletAddress);
+    LendingPool lendingPool = LendingPool(Addresses.LendingPoolAddress);
+    lendingPool.deposit(Addresses.TestTokenAddress, tokenAmount, Addresses.WalletAddress);
+    lendingPool.withdraw(Addresses.TestTokenAddress, tokenAmount / 10, Addresses.BorrowerAddress);
 
-    lendingPool.withdraw(Addresses.TestTokenAddress, 10, Addresses.BorrowerAddress);
+    TestToken collateralAsset = TestToken(Addresses.CollateralTokenAddress);
+    collateralAsset.mint(Addresses.WalletAddress, tokenAmount);
+    collateralAsset.approve(Addresses.LendingPoolAddress, tokenAmount);
+    lendingPool.deposit(Addresses.TestTokenAddress, tokenAmount, Addresses.WalletAddress);
 
+		
+
+    LendingPoolConfigurator lendingPoolConfigurator = LendingPoolConfigurator(Addresses.LendingPoolConfiguratorAddress);
+    lendingPoolConfigurator.enableBorrowingOnReserve(Addresses.CollateralTokenAddress, true);
+    lendingPoolConfigurator.configureReserveAsCollateral(Addresses.CollateralTokenAddress, 8000, 9000, 10500);
+    lendingPool.borrow(Addresses.TestTokenAddress, 1, uint256(DataTypes.InterestRateMode.STABLE), Addresses.WalletAddress);
 
 		vm.stopBroadcast();
 	}

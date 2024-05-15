@@ -18,12 +18,14 @@ contract DeployScript is Script {
     uint256 deployPrivateKey = vm.envUint("PRIVATE_KEY");
     vm.startBroadcast(deployPrivateKey);
 
-    PriceOracle priceOracle = new PriceOracle();
-    LendingRateOracle lendingRateOracle = new LendingRateOracle();
+    // LendingRateOracle lendingRateOracle = new LendingRateOracle();
+    PriceOracle priceOracle = PriceOracle(Addresses.PriceOracleAddress);
 
-    priceOracle.setAssetPrice(Addresses.TestTokenAddress, 10);
-    lendingRateOracle.setMarketBorrowRate(Addresses.TestTokenAddress, WadRayMath.ray()/10);
-    lendingRateOracle.setMarketLiquidityRate(Addresses.TestTokenAddress, WadRayMath.ray()/10);
+    // lendingRateOracle.setMarketBorrowRate(Addresses.TestTokenAddress, WadRayMath.ray()/10);
+    // lendingRateOracle.setMarketLiquidityRate(Addresses.TestTokenAddress, WadRayMath.ray()/10);
+
+    priceOracle.setAssetPrice(Addresses.TestTokenAddress, 10**27);
+    priceOracle.setAssetPrice(Addresses.CollateralTokenAddress, 10**27);
     
     vm.stopBroadcast();
   }

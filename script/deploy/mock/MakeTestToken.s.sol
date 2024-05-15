@@ -24,51 +24,55 @@ contract DeployScript is Script {
 		// string memory tokenName = "Test Token";
     // string memory tokenSymbol = "TT";
 		// TestToken nTestToken = new TestToken(tokenName, tokenSymbol);
-		//    AToken nTestAToken = new AToken();
 
-		string memory stableDebtTokenName = "Test Stable Debt Token";
-		string memory stableDebtTokenSymbol = "TSDT";
-		StableDebtToken stableDebtToken = new StableDebtToken();
-		//StableDebtToken stableDebtToken = StableDebtToken(Addresses.StableDebtTokenAddress);
+		string memory collateralTokenName = "Collateral Token";
+    string memory collateralTokenSymbol = "CT";
+		TestToken nCollateralToken = new TestToken(collateralTokenName, collateralTokenSymbol);
+		// AToken nTestAToken = new AToken();
 
-		uint8 debtTokenDecimals = 18;
-		bytes memory emptyBytes = "";
+	// 	string memory stableDebtTokenName = "Test Stable Debt Token";
+	// 	string memory stableDebtTokenSymbol = "TSDT";
+	// 	StableDebtToken stableDebtToken = new StableDebtToken();
+	// 	//StableDebtToken stableDebtToken = StableDebtToken(Addresses.StableDebtTokenAddress);
 
-		/**
-   * @dev Initializes the debt token.
-   * @param pool The address of the lending pool where this aToken will be used
-   * @param underlyingAsset The address of the underlying asset of this aToken (E.g. WETH for aWETH)
-   * @param incentivesController The smart contract managing potential incentives distribution
-   * @param debtTokenDecimals The decimals of the debtToken, same as the underlying asset's
-   * @param debtTokenName The name of the token
-   * @param debtTokenSymbol The symbol of the token
-   */
+	// 	uint8 debtTokenDecimals = 18;
+	// 	bytes memory emptyBytes = "";
 
-		stableDebtToken.initialize(
-			ILendingPool(Addresses.LendingPoolAddress), 
-			Addresses.TestTokenAddress, 
-			IAaveIncentivesController(Addresses.IncentivesControllerAddress), 
-			debtTokenDecimals, 
-			stableDebtTokenName, 
-			stableDebtTokenSymbol, 
-			emptyBytes
-		);
+	// 	/**
+  //  * @dev Initializes the debt token.
+  //  * @param pool The address of the lending pool where this aToken will be used
+  //  * @param underlyingAsset The address of the underlying asset of this aToken (E.g. WETH for aWETH)
+  //  * @param incentivesController The smart contract managing potential incentives distribution
+  //  * @param debtTokenDecimals The decimals of the debtToken, same as the underlying asset's
+  //  * @param debtTokenName The name of the token
+  //  * @param debtTokenSymbol The symbol of the token
+  //  */
+
+	// 	stableDebtToken.initialize(
+	// 		ILendingPool(Addresses.LendingPoolAddress), 
+	// 		Addresses.TestTokenAddress, 
+	// 		IAaveIncentivesController(Addresses.IncentivesControllerAddress), 
+	// 		debtTokenDecimals, 
+	// 		stableDebtTokenName, 
+	// 		stableDebtTokenSymbol, 
+	// 		emptyBytes
+	// 	);
 
 
-		string memory variableDebtTokenName = "Test Variable Debt Token";
-		string memory variableDebtTokenSymbol = "TVDT";
-		VariableDebtToken variableDebtToken = new VariableDebtToken();
-		// VariableDebtToken variableDebtToken = VariableDebtToken(Addresses.VariableDebtTokenAddress);
+	// 	string memory variableDebtTokenName = "Test Variable Debt Token";
+	// 	string memory variableDebtTokenSymbol = "TVDT";
+	// 	VariableDebtToken variableDebtToken = new VariableDebtToken();
+	// 	// VariableDebtToken variableDebtToken = VariableDebtToken(Addresses.VariableDebtTokenAddress);
 
-		variableDebtToken.initialize(
-			ILendingPool(Addresses.LendingPoolAddress), 
-			Addresses.TestTokenAddress, 
-			IAaveIncentivesController(Addresses.IncentivesControllerAddress), 
-			debtTokenDecimals, 
-			variableDebtTokenName, 
-			variableDebtTokenSymbol, 
-			emptyBytes
-		);
+	// 	variableDebtToken.initialize(
+	// 		ILendingPool(Addresses.LendingPoolAddress), 
+	// 		Addresses.TestTokenAddress, 
+	// 		IAaveIncentivesController(Addresses.IncentivesControllerAddress), 
+	// 		debtTokenDecimals, 
+	// 		variableDebtTokenName, 
+	// 		variableDebtTokenSymbol, 
+	// 		emptyBytes
+	// 	);
 
 
 		vm.stopBroadcast();

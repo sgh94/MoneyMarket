@@ -9,6 +9,7 @@ library Addresses {
   
   address constant WalletAddress = address(0x5803CdB747e1552Be21C5FCa63228aA3D2622873);
   address constant BorrowerAddress = address(0x34501EE677d8180522730e78C213Fec1b53Be5F0);
+  address constant Borrower2Address = address(0x67Db9a858c35Ea0061A9fECaFC19A6a4b302A227);
 
   // Lending Pool
   address constant LendingPoolAddressesProviderAddress = address(0xe24F680D86422Ec5Fc2665cf2A325b6aCf0f796F);
@@ -25,5 +26,6 @@ library Addresses {
   address constant TestATokenAddress = address(0x26cC75268526E2688CE9F4d8BA6619c074482691);
   address constant StableDebtTokenAddress = address(0xDE40cF00d4D47EaB4BEB7D50f21497E9EeEae9a2);
   address constant VariableDebtTokenAddress = address(0xb08deF886C1CA837C8Aa5f5a63b1753d922dFa4C);
+  address constant CollateralTokenAddress = address(0x77Ea5a4EEb3BbcbAE9ddd56e1C3862DB9A0Cdcd7);
 
 }
