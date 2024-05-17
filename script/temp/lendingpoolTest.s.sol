@@ -20,23 +20,25 @@ contract DeployScript is Script {
 
     uint256 tokenAmount = 100;
 
+    LendingPool lendingPool = LendingPool(Addresses.LendingPoolAddress);
+
     TestToken depositAsset = TestToken(Addresses.TestTokenAddress);
     depositAsset.mint(Addresses.WalletAddress, tokenAmount);
     depositAsset.approve(Addresses.LendingPoolAddress, tokenAmount);
 
-    LendingPool lendingPool = LendingPool(Addresses.LendingPoolAddress);
     lendingPool.deposit(Addresses.TestTokenAddress, tokenAmount, Addresses.WalletAddress);
     lendingPool.withdraw(Addresses.TestTokenAddress, tokenAmount / 10, Addresses.BorrowerAddress);
 
     TestToken collateralAsset = TestToken(Addresses.CollateralTokenAddress);
     collateralAsset.mint(Addresses.WalletAddress, tokenAmount);
     collateralAsset.approve(Addresses.LendingPoolAddress, tokenAmount);
-    lendingPool.deposit(Addresses.TestTokenAddress, tokenAmount, Addresses.WalletAddress);
+
+    lendingPool.deposit(Addresses.CollateralTokenAddress, tokenAmount, Addresses.WalletAddress);
 
 		
 
     LendingPoolConfigurator lendingPoolConfigurator = LendingPoolConfigurator(Addresses.LendingPoolConfiguratorAddress);
-    lendingPoolConfigurator.enableBorrowingOnReserve(Addresses.CollateralTokenAddress, true);
+    lendingPoolConfigurator.enableBorrowingOnReserve(Addresses.TestTokenAddress, true);
     lendingPoolConfigurator.configureReserveAsCollateral(Addresses.CollateralTokenAddress, 8000, 9000, 10500);
     lendingPool.borrow(Addresses.TestTokenAddress, 1, uint256(DataTypes.InterestRateMode.STABLE), Addresses.WalletAddress);
 

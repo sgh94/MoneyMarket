@@ -38,7 +38,7 @@ contract DeployScript is Script {
       msg.sender,
       Addresses.TestTokenAddress,
       incentivesController,
-      10,
+      18,
       aTokenName,
       aTokenSymbol,
       temp

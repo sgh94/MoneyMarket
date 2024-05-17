@@ -26,6 +26,10 @@ library Addresses {
   address constant TestATokenAddress = address(0x26cC75268526E2688CE9F4d8BA6619c074482691);
   address constant StableDebtTokenAddress = address(0xDE40cF00d4D47EaB4BEB7D50f21497E9EeEae9a2);
   address constant VariableDebtTokenAddress = address(0xb08deF886C1CA837C8Aa5f5a63b1753d922dFa4C);
-  address constant CollateralTokenAddress = address(0x77Ea5a4EEb3BbcbAE9ddd56e1C3862DB9A0Cdcd7);
+
+  address constant CollateralTokenAddress = address(0xd600E02cCEA73a09855ea6f92337E4c767677180);
+  address constant CollateralATokenAddress = address(0x0EB1F0B16Bf3d23e89ABd50b1c5a5Dd2f5c57f47);
+  address constant CollateralStableDebtTokenAddress = address(0x8e81E4C0613b115348C6d7D96E74DdcBE812ce97);
+  address constant CollateralVariableDebtTokenAddress = address(0x485084039f6b4C373E6f58B84694676868Bd0D49);
 
 }

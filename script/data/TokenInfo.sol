@@ -10,6 +10,9 @@ library TokenInfo {
   string constant TestTokenName = "Test Token";
   string constant TestTokenSymbol = "TT";
 
+  string constant CollateralTokenName = "Collateral Token";
+  string constant CollateralTokenSymbol = "CT";
+
   string constant ATokenName = "Test AToken";
   string constant ATokenSymbol = "TAT";
 
@@ -18,5 +21,8 @@ library TokenInfo {
 
   string constant VariableDebtTokenName = "Test Variable Debt Token";
   string constant VariableDebtTokenSymbol = "TVDT";
+
+  uint8 constant BaseTokenDecimals = 18;
+  bytes constant EmptyByte = "";
 
 }
